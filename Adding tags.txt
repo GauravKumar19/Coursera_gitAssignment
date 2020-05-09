@@ -1,0 +1,227 @@
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git log --oneline --graph --all
+*   d3d98c3 (HEAD -> master, tag: v1.0, origin/master) Merge branch 'featureX' into master
+|\
+| *   d4bd91d (origin/featureX) Merge branch 'featureXNested' into featureX
+| |\
+| | * e1c13a1 nested featureX branch
+| * | bb8fab9 feature double modified in featureX branch
+| |/
+| * 2758562 feature modified in featureX branch
+* | 7a2325a second commit in firstBranch
+|/
+* 51f53f3 (tag: v0.1) first commit
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git tag
+v0.1
+v1.0
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show v0.1
+tag v0.1
+Tagger: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 13:06:23 2020 +0530
+
+includes feature 1
+
+commit 51f53f3046cb255d4741202edd7cf8f7fc02a867 (tag: v0.1)
+Author: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 13:03:41 2020 +0530
+
+    first commit
+
+diff --git a/fileA.txt b/fileA.txt
+new file mode 100644
+index 0000000..1a40689
+--- /dev/null
++++ b/fileA.txt
+@@ -0,0 +1 @@
++feature 1
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ cat>>sample.txt
+adding sample text
+
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git add .
+warning: LF will be replaced by CRLF in sample.txt.
+The file will have its original line endings in your working directory
+gi
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git commit -m "added sample file"
+[master b076648] added sample file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 sample.txt
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git log --oneline --graph --all
+* b076648 (HEAD -> master) added sample file
+*   d3d98c3 (tag: v1.0, origin/master) Merge branch 'featureX' into master
+|\
+| *   d4bd91d (origin/featureX) Merge branch 'featureXNested' into featureX
+| |\
+| | * e1c13a1 nested featureX branch
+| * | bb8fab9 feature double modified in featureX branch
+| |/
+| * 2758562 feature modified in featureX branch
+* | 7a2325a second commit in firstBranch
+|/
+* 51f53f3 (tag: v0.1) first commit
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git tag -a -m "added version 1.2"
+usage: git tag [-a | -s | -u <key-id>] [-f] [-m <msg> | -F <file>]
+                <tagname> [<head>]
+   or: git tag -d <tagname>...
+   or: git tag -l [-n[<num>]] [--contains <commit>] [--no-contains <commit>] [--points-at <object>]
+                [--format=<format>] [--[no-]merged [<commit>]] [<pattern>...]
+   or: git tag -v [--format=<format>] <tagname>...
+
+    -l, --list            list tag names
+    -n[<n>]               print <n> lines of each tag message
+    -d, --delete          delete tags
+    -v, --verify          verify tags
+
+Tag creation options
+    -a, --annotate        annotated tag, needs a message
+    -m, --message <message>
+                          tag message
+    -F, --file <file>     read message from file
+    -e, --edit            force edit of tag message
+    -s, --sign            annotated and GPG-signed tag
+    --cleanup <mode>      how to strip spaces and #comments from message
+    -u, --local-user <key-id>
+                          use another key to sign the tag
+    -f, --force           replace the tag if exists
+    --create-reflog       create a reflog
+
+Tag listing options
+    --column[=<style>]    show tag list in columns
+    --contains <commit>   print only tags that contain the commit
+    --no-contains <commit>
+                          print only tags that don't contain the commit
+    --merged <commit>     print only tags that are merged
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git tag -a -m "naming as version 1.2" v1.2
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git tag
+v0.1
+v1.0
+v1.2
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git tag
+v0.1
+v1.0
+v1.2
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show v1.2
+tag v1.2
+Tagger: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 20:04:28 2020 +0530
+
+naming as version 1.2
+
+commit b0766488a90541105df2fcf1127eef194a82e4ce (HEAD -> master, tag: v1.2)
+Author: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 20:03:21 2020 +0530
+
+    added sample file
+
+diff --git a/sample.txt b/sample.txt
+new file mode 100644
+index 0000000..33eea14
+--- /dev/null
++++ b/sample.txt
+@@ -0,0 +1 @@
++adding sample text
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git log --oneline --graph --all
+* b076648 (HEAD -> master, tag: v1.2) added sample file
+*   d3d98c3 (tag: v1.0, origin/master) Merge branch 'featureX' into master
+|\
+| *   d4bd91d (origin/featureX) Merge branch 'featureXNested' into featureX
+| |\
+| | * e1c13a1 nested featureX branch
+| * | bb8fab9 feature double modified in featureX branch
+| |/
+| * 2758562 feature modified in featureX branch
+* | 7a2325a second commit in firstBranch
+|/
+* 51f53f3 (tag: v0.1) first commit
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show remote origin
+fatal: ambiguous argument 'remote': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git remote show origin
+fatal: unable to access 'https://github.com/GourishettySairam/Coursera_VersionControlWithGit.git/': Could not resolve host: github.com
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/GourishettySairam/Coursera_VersionControlWithGit.git
+  Push  URL: https://github.com/GourishettySairam/Coursera_VersionControlWithGit.git
+  HEAD branch: master
+  Remote branches:
+    featureX tracked
+    master   tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show HEAD~
+commit d3d98c3fe691eace33ae1023c9c0c214dce49983 (tag: v1.0, origin/master)
+Merge: 7a2325a d4bd91d
+Author: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 14:52:32 2020 +0530
+
+    Merge branch 'featureX' into master
+
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show HEAD~3
+commit 51f53f3046cb255d4741202edd7cf8f7fc02a867 (tag: v0.1)
+Author: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 13:03:41 2020 +0530
+
+    first commit
+
+diff --git a/fileA.txt b/fileA.txt
+new file mode 100644
+index 0000000..1a40689
+--- /dev/null
++++ b/fileA.txt
+@@ -0,0 +1 @@
++feature 1
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show HEAD^1
+commit d3d98c3fe691eace33ae1023c9c0c214dce49983 (tag: v1.0, origin/master)
+Merge: 7a2325a d4bd91d
+Author: Gourishetty Sairam <sairamgourishetty99@gmail.com>
+Date:   Fri May 8 14:52:32 2020 +0530
+
+    Merge branch 'featureX' into master
+
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$ git show HEAD^2
+fatal: ambiguous argument 'HEAD^2': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+DIVYA@Lenovo-PCD MINGW64 /g/Version control with git/repos/projectb (master)
+$
